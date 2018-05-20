@@ -28,6 +28,7 @@ $RECYCLE.BIN/
 Public/QuantAthleticsCordova/QuantAthleticsCordova/node_modules/
 Public/Web/qa.public.ionic2/node_modules/
 Internal/AdminSite/bin/
+Internal/AdminSite/node_modules/
 Internal/QA.Core/bin/
 Internal/QA.InternalServices/bin/
 Internal/QA.Server.PublicSite/bin/
