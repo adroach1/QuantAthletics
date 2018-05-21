@@ -1,0 +1,26 @@
+﻿<h2>Athlete Data</h2>
+<p>
+   Here are some commands you can make to manage athlete Profiles. 
+</p>
+
+    <div *ngIf="isDataAvailable">
+        <div>
+            Athlete Data Provider Type:
+            <select [(value)] ="athleteProfile.SourceType" >
+                <option value="Strava">Strava</option>
+                <option value="Garmin">Garmin</option>
+            </select>
+        </div>
+        <div>
+            Guid:
+            <input type="text" [(ngModel)]="athleteProfile.Guid" />
+        </div>
+        <div>ADP Athlete Id: 
+            <input type="text" [(ngModel)]="athleteProfile.SourceAthleteId" />
+        </div>
+        <div>ADP Key: 
+            <input type="text" [(ngModel)]="athleteProfile.SourceKey" />
+        </div>
+        <button (click)="createAthleteProfile()">Create Athlete Profile</button>
+    </div>
+

@@ -1,0 +1,43 @@
+﻿<h2>Manage Users</h2>
+<p>
+    Manage Users.
+</p>
+
+<div *ngIf="isDataAvailable">
+    <table>
+        <tr>
+            <td>Id:</td>
+            <td><input type="text" [(ngModel)]="userSearch.Guid"/></td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" [(ngModel)]="userSearch.Username"/></td>
+        </tr>
+        <tr>
+            <td>Email Address:</td>
+            <td><input type="text" [(ngModel)]="userSearch.EmailAddress" /></td>
+        </tr>
+    </table>
+
+    <button (click)="searchUsers()">Search Users</button>
+    <button routerLink="/athleteData">Create User</button>
+    <table>
+
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email Address</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>LastModified</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.Id}}</td>
+            <td><input type="text" [(ngModel)]="user.Username"/></td>
+            <td>{{user.EmailAddress}}</td>
+            <td>{{user.FirstName}}</td>
+            <td>{{user.LastName}}</td>
+            <td>{{user.LastModified}}</td>
+        </tr>
+    </table>
+</div>
