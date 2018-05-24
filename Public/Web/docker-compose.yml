@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  p1:
+    image: p1
+    build:
+      context: .
+      dockerfile: P1\Dockerfile
