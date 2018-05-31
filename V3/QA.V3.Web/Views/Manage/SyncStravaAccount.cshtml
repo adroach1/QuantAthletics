@@ -1,0 +1,23 @@
+﻿@model SyncStravaAccountViewModel
+@{
+    ViewData["Title"] = "Sync Strava Account";
+    ViewData.AddActivePage(ManageNavPages.SyncStravaAccount);
+}
+
+<h4>@ViewData["Title"]</h4>
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            Click the following button to sync with your strava account. 
+            You may be asked to log into your strava account and authorize Quant Athletics access to your Strava activity data.
+        </p>
+        <button type="submit" class="btn btn-default">
+            <a href="@Model.StravaSyncUrl">Sync Strava Now</a>
+        </button>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -7,6 +7,47 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QA.V3.Web.Data.Migrations
 {
+
+    public partial class QACoreSchema : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "ActivityDataProviders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 256, nullable: false),
+                    GrantAccessUrl = table.Column<string>(maxLength: 1000)
+
+                },
+                constraints: table => { table.PrimaryKey("PK_ActivityDataProviders", x => x.Id); });
+        }
+
+
+        //Add the athlete account table with foreign keys
+        //public class AthleteAccount
+        //{
+        //    public static AthleteAccount GetNew()
+        //    {
+        //        return new AthleteAccount();
+        //    }
+        //    public int Id { get; set; }
+        //    public int UserId { get; set; }
+        //    public int ADPId { get; set; }
+
+        //    public ProfileSourceType SourceType { get; set; }
+        //    public string SourceAthleteId { get; set; }
+        //    public string SourceKey { get; set; }
+        //}
+
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            base.Down(migrationBuilder);
+        }
+    }
+
     public partial class CreateIdentitySchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

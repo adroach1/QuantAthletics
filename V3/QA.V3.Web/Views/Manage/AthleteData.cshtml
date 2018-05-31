@@ -1,0 +1,22 @@
+﻿@model AthleteDataViewModel
+@{
+    ViewData["Title"] = "Athlete Data";
+    ViewData.AddActivePage(ManageNavPages.AthleteData);
+}
+
+<h4>@ViewData["Title"]</h4>
+@Html.Partial("_StatusMessage", "No athlete accounts have been synced")
+<div class="row">
+    <div class="col-md-6">
+        
+        <button type="submit" class="btn btn-default">
+            <a asp-action="SyncStravaAccount">
+                Sync Strava Account
+            </a>
+        </button>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

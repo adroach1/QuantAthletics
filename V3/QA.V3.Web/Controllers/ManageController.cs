@@ -491,6 +491,34 @@ namespace QA.V3.Web.Controllers
             return View(nameof(ShowRecoveryCodes), model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AthleteData()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            _logger.LogInformation("User with ID {UserId} is viewing athlete data", user.Id);
+            var model = new AthleteDataViewModel();
+            return View(nameof(AthleteData),model);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> SyncStravaAccount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            _logger.LogInformation("User with ID {UserId} is interested in syncing a strava account", user.Id);
+            var model = new SyncStravaAccountViewModel();
+            return View(nameof(SyncStravaAccount), model);
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
@@ -542,4 +570,6 @@ namespace QA.V3.Web.Controllers
 
         #endregion
     }
+
+
 }
