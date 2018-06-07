@@ -18,10 +18,11 @@ namespace QA.V3.Web.Views.Manage
         public static string ExternalLogins => "ExternalLogins";
 
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
-        public static string AthleteData => "AthleteData";
+        public static string AthleteOverview => "AthleteOverview";
         public static string SyncStravaAccount => "SyncStravaAccount";
+        public static string StravaAccountOverview => "StravaAccountOverview";
 
-        public static string AthleteDataClass(ViewContext viewContext) => PageNavClass(viewContext, AthleteData);
+        public static string AthleteOverviewClass(ViewContext viewContext) => PageNavClass(viewContext, AthleteOverview);
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 

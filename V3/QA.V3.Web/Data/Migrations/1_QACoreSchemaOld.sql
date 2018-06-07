@@ -1,0 +1,82 @@
+﻿/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+USE [aspnet-QA.V3.Web-BB31C2B9-DDFC-463F-B281-A48DA1942B7B]
+GO
+
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+CREATE TABLE dbo.ActivityDataProviders
+	(
+	Id int NOT NULL,
+	Name nvarchar(500) NOT NULL,
+	GrantAccessUrl nvarchar(1000) NOT NULL
+	)  ON [PRIMARY]
+GO
+ALTER TABLE dbo.ActivityDataProviders ADD CONSTRAINT
+	PK_ActivityDataProviders PRIMARY KEY CLUSTERED 
+	(
+	Id
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+ALTER TABLE dbo.ActivityDataProviders SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.AspNetUsers SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+CREATE TABLE dbo.ActivityAccounts
+	(
+	Id int NOT NULL IDENTITY (1, 1),
+	UserId nvarchar(450) NOT NULL,
+	ADPId int NOT NULL,
+	SourceType int NOT NULL,
+	SourceAthleteId nvarchar(500) NULL,
+	SourceKey nvarchar(500) NULL
+	)  ON [PRIMARY]
+GO
+ALTER TABLE dbo.ActivityAccounts ADD CONSTRAINT
+	PK_ActivityAccounts PRIMARY KEY CLUSTERED 
+	(
+	Id
+	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+ALTER TABLE dbo.ActivityAccounts ADD CONSTRAINT
+	FK_ActivityAccounts_AspNetUsers FOREIGN KEY
+	(
+	UserId
+	) REFERENCES dbo.AspNetUsers
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.ActivityAccounts ADD CONSTRAINT
+	FK_ActivityAccounts_ActivityDataProviders FOREIGN KEY
+	(
+	ADPId
+	) REFERENCES dbo.ActivityDataProviders
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.ActivityAccounts SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+

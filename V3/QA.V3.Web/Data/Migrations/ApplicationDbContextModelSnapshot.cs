@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using QA.Core.Model;
 
 namespace QA.V3.Web.Data.Migrations
 {
@@ -14,6 +15,8 @@ namespace QA.V3.Web.Data.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<User>().ToTable("AspNetUsers");
+
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rc3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);

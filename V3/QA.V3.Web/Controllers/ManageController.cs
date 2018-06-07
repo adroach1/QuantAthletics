@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using QA.V3.Web.Models;
+using QA.V3.Web.Models.AthleteViewModels;
 using QA.V3.Web.Models.ManageViewModels;
 using QA.V3.Web.Services;
 
@@ -501,7 +502,7 @@ namespace QA.V3.Web.Controllers
             }
 
             _logger.LogInformation("User with ID {UserId} is viewing athlete data", user.Id);
-            var model = new AthleteDataViewModel();
+            var model = new AthleteOverviewViewModel();
             return View(nameof(AthleteData),model);
         }
         
@@ -518,6 +519,8 @@ namespace QA.V3.Web.Controllers
             var model = new SyncStravaAccountViewModel();
             return View(nameof(SyncStravaAccount), model);
         }
+
+
 
         #region Helpers
 

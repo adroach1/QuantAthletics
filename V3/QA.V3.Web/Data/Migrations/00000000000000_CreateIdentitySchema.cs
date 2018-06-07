@@ -8,21 +8,39 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QA.V3.Web.Data.Migrations
 {
 
-    public partial class QACoreSchema : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.CreateTable(
-                name: "ActivityDataProviders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: false),
-                    GrantAccessUrl = table.Column<string>(maxLength: 1000)
+    //public partial class QACoreSchema : Migration
+    //{
+        //protected override void Up(MigrationBuilder migrationBuilder)
+        //{
+        //    migrationBuilder.CreateTable(
+        //        name: "ActivityDataProviders",
+        //        columns: table => new
+        //        {
+        //            Id = table.Column<int>(nullable: false),
+        //            Name = table.Column<string>(maxLength: 256, nullable: false),
+        //            GrantAccessUrl = table.Column<string>(maxLength: 1000)
 
-                },
-                constraints: table => { table.PrimaryKey("PK_ActivityDataProviders", x => x.Id); });
-        }
+        //        },
+        //        constraints: table => { table.PrimaryKey("PK_ActivityDataProviders", x => x.Id); });
+
+        //    migrationBuilder.CreateTable(
+        //        name: "AthleteAccounts",
+        //        columns: table => new
+        //        {
+        //            Id = table.Column<int>(nullable: false),
+        //            UserId = table.Column<string>(nullable: false),
+        //            ADPId = table.Column<int>(nullable: false),
+        //            SourceType = table.Column<int>(nullable: false),
+        //            SourceAthleteId = table.Column<string>(nullable:false),
+        //            SourceKey = table.Column<string>(nullable: false)
+        //        },
+        //        constraints: table =>
+        //        {
+        //            table.PrimaryKey("PK_ActivityDataProviders", x => x.Id);
+        //            table.ForeignKey("FK_")
+        //        });
+                
+        //}
 
 
         //Add the athlete account table with foreign keys
@@ -42,11 +60,11 @@ namespace QA.V3.Web.Data.Migrations
         //}
 
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            base.Down(migrationBuilder);
-        }
-    }
+    //    protected override void Down(MigrationBuilder migrationBuilder)
+    //    {
+    //        base.Down(migrationBuilder);
+    //    }
+    //}
 
     public partial class CreateIdentitySchema : Migration
     {
